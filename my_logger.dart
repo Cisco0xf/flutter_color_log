@@ -23,7 +23,11 @@ class Log {
     LogColor color = LogColor.green,
     String? name,
   }) {
-    dev.log("${_colors[color]}$data$_closeColor", name: name ?? "DEBUG LOG: ");
+    if (!kDebugMode) {
+      return;
+    }
+    
+    dev.log("${_colors[color]}$data$_closeColor", name: name ?? "DEBUG LOG:");
   }
 }
 
